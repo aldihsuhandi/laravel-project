@@ -28,7 +28,7 @@
             <a href = "/register" class = "btn btn-primary border mx-1">Register</a>
         </div>
     </nav>
-    <main class = "h-auto bg-secondary d-flex justify-content-center align-items-center p-5">
+    <main class = "bg-secondary d-flex justify-content-center align-items-center p-5 vh-100">
         @yield('content')
     </main>
     <footer class = "d-flex flex-column justify-content-center align-items-center bg-primary p-3">
