@@ -18,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login', [AuthController::class, 'loginIndex']);
+Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'registerIndex']);
+Route::post('/register', [AuthController::class, 'register']);

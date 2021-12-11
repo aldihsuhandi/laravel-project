@@ -13,7 +13,7 @@
     {{-- font awesome --}}
     <link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel = "stylesheet">
 </head>
-<body class = "min-vh-100">
+<body class = "min-vh-100 d-flex flex-column bg-secondary">
     <header class = "bg-warning d-flex flex-row mw-100 p-3">
         <img src="{{ asset('image/icon/logoDYID.png') }}" alt="" height=50px class = "px-2">
         <form action="#" method = "get" class = "form-horizontal d-flex flex-row w-75">
@@ -28,14 +28,14 @@
             <a href = "/register" class = "btn btn-primary border mx-1">Register</a>
         </div>
     </nav>
-    <main class = "bg-secondary d-flex justify-content-center align-items-center p-5 vh-100">
+    <main class = "d-flex justify-content-center align-items-start p-5">
         @yield('content')
     </main>
-    <footer class = "d-flex flex-column justify-content-center align-items-center bg-primary p-3">
+    <footer class = "mt-auto d-flex flex-column justify-content-center align-items-center bg-primary p-3">
         <div class = "d-flex flex-row justify-content-evenly w-50 my-1">
-            <i class = "px-3 fab fa-facebook-f text-white"></i>
-            <i class = "px-3 fab fa-twitter text-white"></i>
-            <i class = "px-3 fab fa-instagram text-white"></i>
+            <a href = "https://facebook.com" class = "fab text-decoration-none fa-facebook-f text-white"></a>
+            <a href = "https://twitter.com" class = "fab text-decoration-none fa-twitter text-white"></a>
+            <a href = "https://instagram.com" class = "fab text-decoration-none fa-instagram text-white"></a>
         </div>
         <div class = "mt-2 d-flex align-items-center justify-content-center text-white">
             &copy;2021 Copyright DY20-1
