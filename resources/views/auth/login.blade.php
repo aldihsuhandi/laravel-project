@@ -11,7 +11,7 @@
 
     @if (isset($invalid) && $invalid == true)
         <div class = "text-danger">
-            <p>Invalid email / password</p>
+            <b>Invalid email / password</b>
         </div>
     @endif
 
