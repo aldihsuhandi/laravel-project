@@ -61,6 +61,6 @@ class AuthController extends Controller
             return redirect('/');
         }
 
-        return view('auth.login')->with('email', $email)->with('invalid', true);
+        return view('auth.login')->with('invalid', true);
     }
 }
