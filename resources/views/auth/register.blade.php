@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Homepage')
+@section('title', 'Register')
 
 @section('content')
 <div class = "d-flex justify-content-start align-items-center flex-column bg-white rounded p-3 w-50 shadow">

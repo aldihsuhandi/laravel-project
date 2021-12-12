@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Middleware\Authentication;
+use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'loginIndex']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'registerIndex']);
+    Route::post('/register', [AuthController::class, 'register']);
+});
 
-Route::get('/login', [AuthController::class, 'loginIndex']);
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/register', [AuthController::class, 'registerIndex']);
-Route::post('/register', [AuthController::class, 'register']);
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+});

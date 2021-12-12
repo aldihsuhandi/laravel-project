@@ -63,4 +63,13 @@ class AuthController extends Controller
 
         return view('auth.login')->with('invalid', true);
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }

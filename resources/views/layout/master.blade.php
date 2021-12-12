@@ -8,7 +8,7 @@
     
     {{-- bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     {{-- font awesome --}}
     <link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel = "stylesheet">
@@ -22,11 +22,47 @@
         </form>
     </header>
     <nav class = "bg-primary d-flex flex-row align-items-center justify-content-between mw-100 p-3">
-        <a href="/" class = "text-white text-decoration-none">Home</a>
-        <div class = "d-flex flex-row justify-content-center align-items-center">
-            <a href = "/login" class = "btn btn-primary border mx-1">Login</a>
-            <a href = "/register" class = "btn btn-primary border mx-1">Register</a>
+        <div class = "d-flex flex-row align-items-center">
+            <a href="/" class = "px-2 text-white text-decoration-none">Home</a>
+            @if (Auth::check() && Auth::user() -> role -> role == "Member")
+                <a href="" class = "px-2 text-white text-decoration-none">My Cart</a>
+                <a href="" class = "px-2 text-white text-decoration-none">History Transaction</a>
+            @elseif (Auth::check() && Auth::user() -> role -> role == "Admin")
+                <div class = "dropdown">
+                    <a href="#" class = "dropdown-toggle px-2 text-white text-decoration-none"
+                    role = "button" id = "dropdownProduct"
+                    data-bs-toggle = "dropdown" aria-expanded="false"
+                    >Manage Product</a>
+
+                    <ul class = "dropdown-menu" aria-labelledby="dropdownProduct">
+                        <li><a class = "dropdown-item p-2">View Product</a></li>
+                        <li><a class = "dropdown-item p-2">Add Product</a></li>
+                    </ul>
+                </div>
+                <div class = "dropdown">
+                    <a href="#" class = "dropdown-toggle px-2 text-white text-decoration-none"
+                    role = "button" id = "dropdownCategory"
+                    data-bs-toggle = "dropdown" aria-expanded="false"
+                    >Manage Category</a>
+
+                    <ul class = "dropdown-menu" aria-labelledby="dropdownCategory">
+                        <li><a class = "dropdown-item p-2">View Category</a></li>
+                        <li><a class = "dropdown-item p-2">Add Category</a></li>
+                    </ul>
+                </div>
+            @endif
         </div>
+        @if (Auth::check())
+            <form method = "post" action = "/logout" class = "d-flex flex-row justify-content-center align-items-center">
+                @csrf
+                <button type = "submit" class = "btn btn-primary border mx-1">Logout</button>
+            </form>
+        @else
+            <div class = "d-flex flex-row justify-content-center align-items-center">
+                <a href = "/login" class = "btn btn-primary border mx-1">Login</a>
+                <a href = "/register" class = "btn btn-primary border mx-1">Register</a>
+            </div>
+        @endif
     </nav>
     <main class = "d-flex justify-content-center align-items-start p-5">
         @yield('content')
