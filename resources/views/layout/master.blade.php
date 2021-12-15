@@ -35,8 +35,8 @@
                     >Manage Product</a>
 
                     <ul class = "dropdown-menu" aria-labelledby="dropdownProduct">
-                        <li><a class = "dropdown-item p-2">View Product</a></li>
-                        <li><a class = "dropdown-item p-2">Add Product</a></li>
+                        <li><a href = "/product" class = "dropdown-item p-2">View Product</a></li>
+                        <li><a href = "/product/new" class = "dropdown-item p-2">Add Product</a></li>
                     </ul>
                 </div>
                 <div class = "dropdown">

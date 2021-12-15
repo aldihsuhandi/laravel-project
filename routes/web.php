@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Middleware\Authentication;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'loginIndex']);
     Route::post('/login', [AuthController::class, 'login']);
@@ -26,5 +27,13 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/logout', [AuthController::class, 'logout']);
+
+    // admin
+    Route::get('/product', [ProductController::class, 'index']);
+    Route::get('/product/{id}/delete', [ProductController::class, 'deleteProduct']);
+    Route::get('/product/{id}/update', [ProductController::class, 'updateIndex']);
+    Route::post('/product/{id}/update', [ProductController::class, 'updateProduct']);
+    Route::get('/product/new', [ProductController::class, 'addIndex']);
+    Route::post('/product/new', [ProductController::class, 'addProduct']);
 });
