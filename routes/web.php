@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
-use App\Http\Middleware\Authentication;
-use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,10 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
 
     // admin
-    Route::get('/product', [ProductController::class, 'index']);
-    Route::get('/product/{id}/delete', [ProductController::class, 'deleteProduct']);
-    Route::get('/product/{id}/update', [ProductController::class, 'updateIndex']);
-    Route::post('/product/{id}/update', [ProductController::class, 'updateProduct']);
-    Route::get('/product/new', [ProductController::class, 'addIndex']);
-    Route::post('/product/new', [ProductController::class, 'addProduct']);
+    Route::prefix('product')->group(function () {
+        Route::get('/', [ProductController::class, 'index']);
+        Route::get('/{id}/delete', [ProductController::class, 'deleteProduct']);
+        Route::get('/{id}/update', [ProductController::class, 'updateIndex']);
+        Route::post('/{id}/update', [ProductController::class, 'updateProduct']);
+        Route::get('/new', [ProductController::class, 'addIndex']);
+        Route::post('/new', [ProductController::class, 'addProduct']);
+    });
+
+    Route::get('/category', [CategoryController::class, 'index']);
 });

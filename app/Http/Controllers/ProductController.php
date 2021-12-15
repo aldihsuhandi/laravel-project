@@ -62,6 +62,11 @@ class ProductController extends Controller
     public function updateIndex($id)
     {
         $product = Product::find($id);
+
+        if ($product == NULL) {
+            return redirect('/product');
+        }
+
         $categories = Category::all();
         return view(
             'product.template',

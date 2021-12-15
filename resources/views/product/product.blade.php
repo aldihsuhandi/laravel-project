@@ -8,7 +8,7 @@
         </h3>
     </div>
 
-    <table class = "table-info table">
+    <table class = "table-warning table">
         <thead>
             <tr>
                 <th scope = "col">No</th>
