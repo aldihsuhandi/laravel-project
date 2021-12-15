@@ -53,10 +53,7 @@
             @endif
         </div>
         @if (Auth::check())
-            <form method = "post" action = "/logout" class = "d-flex flex-row justify-content-center align-items-center">
-                @csrf
-                <button type = "submit" class = "btn btn-primary border mx-1">Logout</button>
-            </form>
+            <a href="/logout" class = "btn btn-primary border mx-1">Logout</a>
         @else
             <div class = "d-flex flex-row justify-content-center align-items-center">
                 <a href = "/login" class = "btn btn-primary border mx-1">Login</a>

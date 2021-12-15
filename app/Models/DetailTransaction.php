@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class DetailTransaction extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+
+    public function header()
+    {
+        return $this->belongsTo(Transaction::class);
+    }
 }
