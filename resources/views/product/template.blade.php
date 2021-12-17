@@ -53,7 +53,9 @@
             <div class = "text-danger px-2" style = "font-size: 11pt;">* {{ $message }}</div>
         @enderror
         <div class = " p-2 m-2 w-100 d-flex flex-row justify-content-end">
-            <input type="submit" class = "btn btn-warning" value = "Save">
+            <input type="submit" class = "btn btn-warning"
+            value = "@if ($action == "insert") Add @else Save @endif"
+            >
         </div>
     </form>
 </div>

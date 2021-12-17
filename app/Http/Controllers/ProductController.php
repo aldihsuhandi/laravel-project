@@ -50,6 +50,7 @@ class ProductController extends Controller
             $image = $request->image;
             $image = Storage::put('public/product', $image, 'public');
             $image = explode('/', $image)[2];
+            $image = 'storage/product/' . $image;
             $product->image = $image;
         } else {
             $product->image = "";

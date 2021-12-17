@@ -24,12 +24,12 @@
             @forelse ($products as $product)
                 <tr>
                     <th scope = "row">{{ $product -> id }}</th>
-                    <td><img style = "width: 100px;" src="{{ asset('storage/product/'.$product -> image) }}" alt=""></td>
+                    <td><img style = "width: 100px;" src="{{ asset($product -> image) }}" alt=""></td>
                     <td>{{ $product -> name }}</td>
                     <td>{{ $product -> description }}</td>
                     <td>{{ $product -> price }}</td>
                     <td>{{ $product -> category -> name }}</td>
-                    <td class = "d-flex flex-row justify-content-center align-items-center"> 
+                    <td class = "d-flex flex-row justify-content-center align-items-center h-100"> 
                         <a href = "/product/{{ $product -> id }}/update" class="btn btn-warning m-1">Update</a>
                         <form action="/product/{{ $product -> id }}/delete" method = "get">
                             @csrf

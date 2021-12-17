@@ -29,14 +29,22 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
 
     // admin
-    Route::prefix('product')->group(function () {
-        Route::get('/', [ProductController::class, 'index']);
-        Route::get('/{id}/delete', [ProductController::class, 'deleteProduct']);
-        Route::get('/{id}/update', [ProductController::class, 'updateIndex']);
-        Route::post('/{id}/update', [ProductController::class, 'updateProduct']);
-        Route::get('/new', [ProductController::class, 'addIndex']);
-        Route::post('/new', [ProductController::class, 'addProduct']);
-    });
+    Route::middleware('admin')->group(function () {
+        Route::prefix('product')->group(function () {
+            Route::get('/', [ProductController::class, 'index']);
+            Route::get('/{id}/delete', [ProductController::class, 'deleteProduct']);
+            Route::get('/{id}/update', [ProductController::class, 'updateIndex']);
+            Route::post('/{id}/update', [ProductController::class, 'updateProduct']);
+            Route::get('/new', [ProductController::class, 'addIndex']);
+            Route::post('/new', [ProductController::class, 'addProduct']);
+        });
 
-    Route::get('/category', [CategoryController::class, 'index']);
+        Route::prefix('category')->group(function () {
+            Route::get('/', [CategoryController::class, 'index']);
+            Route::get('/new', [CategoryController::class, 'addIndex']);
+            Route::post('/new', [CategoryController::class, 'addCategory']);
+            Route::get('/{id}/update', [CategoryController::class, 'updateIndex']);
+            Route::post('/update', [CategoryController::class, 'updateCategory']);
+        });
+    });
 });

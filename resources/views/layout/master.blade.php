@@ -47,7 +47,7 @@
 
                     <ul class = "dropdown-menu" aria-labelledby="dropdownCategory">
                         <li><a href = "/category" class = "dropdown-item p-2">View Category</a></li>
-                        <li><a class = "dropdown-item p-2">Add Category</a></li>
+                        <li><a href = "/category/new" class = "dropdown-item p-2">Add Category</a></li>
                     </ul>
                 </div>
             @endif
