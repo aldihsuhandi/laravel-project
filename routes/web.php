@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [CartController::class, 'index']);
         Route::post('/add', [CartController::class, 'add']);
         Route::delete('/deleteWholeCart', [CartController::class, 'deleteWholeCart']);
+        Route::post('/delete', [CartController::class, 'delete']);
     });
 
     // admin
@@ -54,6 +55,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/new', [CategoryController::class, 'addCategory']);
             Route::get('/{id}/update', [CategoryController::class, 'updateIndex']);
             Route::post('/update', [CategoryController::class, 'updateCategory']);
+            Route::get('{id}/delete', [CategoryController::class, 'deleteCategory']);
         });
     });
 });

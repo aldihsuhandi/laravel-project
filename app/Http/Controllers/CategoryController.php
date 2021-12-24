@@ -57,6 +57,7 @@ class CategoryController extends Controller
             ]
         );
     }
+
     public function updateCategory(Request $request)
     {
         $rules = [
@@ -71,5 +72,13 @@ class CategoryController extends Controller
             ]);
 
         return redirect('/category');
+    }
+
+    public function deleteCategory($category_id)
+    {
+        $category = Category::find($category_id);
+        $category->delete();
+
+        return redirect()->back();
     }
 }
