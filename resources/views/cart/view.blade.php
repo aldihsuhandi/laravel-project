@@ -14,7 +14,7 @@
                 return $t -> quantity * $t -> product -> price;
             }) }}</div>
         </div>
-        <a href="" class = "btn btn-warning">Checkout ({{ $carts -> sum(function($t){
+        <a href="/cart/deleteWholeCart" class = "btn btn-warning">Checkout ({{ $carts -> sum(function($t){
             return $t -> quantity;
         }) }})</a>
     </div>

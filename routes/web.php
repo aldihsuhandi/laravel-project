@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('cart')->group(function () {
         Route::get('/', [CartController::class, 'index']);
         Route::post('/add', [CartController::class, 'add']);
+        Route::delete('/deleteWholeCart', [CartController::class, 'deleteWholeCart']);
     });
 
     // admin
