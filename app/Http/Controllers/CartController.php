@@ -40,4 +40,13 @@ class CartController extends Controller
         }
         return redirect()->back();
     }
+
+    public function delete(Request $request)
+    {
+        $user_id = $request->user_id;
+        $product_id = $request->product_id;
+        Cart::where('user_id', $user_id)->where('product_id', $product_id)
+            ->delete();
+        return redirect()->back();
+    }
 }

@@ -11,7 +11,12 @@
             <p class = "py-2">IDR. {{ $cart -> quantity * $cart -> product -> price }}</p>
             <div class = "d-flex flex-row align-items-center">
                 <a href="" class = "btn btn-warning mx-1">Edit</a>
-                <a href="" class = "btn btn-danger text-white mx-1">Delete</a>
+                <form action="/cart/delete" method = "post">
+                    @csrf
+                    <input type="hidden" name="user_id" value = "{{ Auth::user() -> id }}">
+                    <input type="hidden" name="product_id" value = "{{ $cart -> product -> id }}">
+                    <input type = "submit" class = "btn btn-danger text-white mx-1" value = "Delete">
+                </form>
             </div>
         </div> 
     </div>

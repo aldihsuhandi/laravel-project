@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
@@ -58,6 +59,10 @@ class AuthController extends Controller
         $remember = $request->remember;
 
         if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
+            if ($remember == true) {
+                $time = 60 * 60 * 5;
+                Cookie::queue('loginCookie', $email, $time);
+            }
             return redirect('/');
         }
 
