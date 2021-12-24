@@ -14,7 +14,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function loginIndex()
+    public function loginIndex(Request $request)
     {
         return view('auth.login');
     }
@@ -61,7 +61,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
             if ($remember == true) {
                 $time = 60 * 60 * 5;
-                Cookie::queue('loginCookie', $email, $time);
+                Cookie::queue('email', $email, $time);
             }
             return redirect('/');
         }

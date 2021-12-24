@@ -17,7 +17,13 @@
 
     <form action="/login" method = "post" class = "w-100 p-2 d-flex flex-column align-items-start justify-content-start">
         @csrf
-        <input type="text" name = "email" id = "email" placeholder = "Email" class = "border borer-secondary rounded form-control p-2 m-2" value = "@if (isset($email)){{ $email }}@else{{ old('email') }}@endif">
+        <input type="text" name = "email" id = "email" placeholder = "Email" class = "border borer-secondary rounded form-control p-2 m-2" 
+        value = @if (Cookie::get('email') != NULL)
+            "{{ Cookie::get('email') }}"
+        @else
+            "{{ old('email') }}"
+        @endif
+        >
         @error('email')
             <div class = "text-danger px-2" style = "font-size: 11pt;">* {{ $message }}</div>
         @enderror
