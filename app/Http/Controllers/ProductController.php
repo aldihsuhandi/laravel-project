@@ -9,10 +9,16 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    public function view($product_id)
+    {
+        $product = Product::find($product_id);
+        return view('product.view', ["product" => $product]);
+    }
+
     public function index()
     {
         $products = Product::all();
-        return view('product.product', ["products" => $products]);
+        return view('product.products', ["products" => $products]);
     }
 
     public function addIndex()

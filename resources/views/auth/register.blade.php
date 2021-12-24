@@ -10,7 +10,7 @@
     </div>
     <form action="/register" method = "post" class = "w-100 p-2 d-flex flex-column align-items-start justify-content-start">
         @csrf
-        <input type="text" name = "name" id = "name" placeholder = "Full name" class = "border borer-secondary rounded form-control p-2 m-2"
+        <input type="text" name = "name" id = "name" placeholder = "Full name" class = "border border-secondary rounded form-control p-2 m-2"
         value = "@if (isset($name)){{ $name }}@else{{ old('name') }}@endif"
         >
         @error('name')
@@ -35,21 +35,21 @@
         @error('gender')
             <div class = "text-danger px-2" style = "font-size: 11pt;">* {{ $message }}</div>
         @enderror
-        <textarea name="address" id="adress" rows="3" placeholder = "Address" class = "border borer-secondary rounded form-control p-2 m-2" style = "resize: none">@if (isset($address)){{ $address }}@else{{ old('address') }}@endif</textarea>
+        <textarea name="address" id="adress" rows="3" placeholder = "Address" class = "border border-secondary rounded form-control p-2 m-2" style = "resize: none">@if (isset($address)){{ $address }}@else{{ old('address') }}@endif</textarea>
         @error('address')
             <div class = "text-danger px-2" style = "font-size: 11pt;">* {{ $message }}</div>
         @enderror
         <input type="text" name = "email" id = "email" placeholder = "Email" 
         value = "@if (isset($email)){{ $email }}@else{{ old('email') }}@endif"
-        class = "border borer-secondary rounded form-control p-2 m-2">
+        class = "border border-secondary rounded form-control p-2 m-2">
         @error('email')
             <div class = "text-danger px-2" style = "font-size: 11pt;">* {{ $message }}</div>
         @enderror
-        <input type="password" name = "password" id = "password" placeholder = "Password" class = "border borer-secondary rounded form-control p-2 m-2">
+        <input type="password" name = "password" id = "password" placeholder = "Password" class = "border border-secondary rounded form-control p-2 m-2">
         @error('password')
             <div class = "text-danger px-2" style = "font-size: 11pt;">* {{ $message }}</div>
         @enderror
-        <input type="password" name = "confirm" id = "confirm" placeholder = "Confirm Password" class = "border borer-secondary rounded form-control p-2 m-2">
+        <input type="password" name = "confirm" id = "confirm" placeholder = "Confirm Password" class = "border border-secondary rounded form-control p-2 m-2">
         @error('confirm')
             <div class = "text-danger px-2" style = "font-size: 11pt;">* {{ $message }}</div>
         @enderror

@@ -8,7 +8,7 @@
                     IDR. {{ $product -> price }}
                 </div>
                 <div class = "d-flex justify-content-start pt-2 mt-2">
-                    <a class="btn btn-warning rounded">More Detail</a>
+                    <a href = "/product/{{ $product -> id }}/view" class="btn btn-warning rounded">More Detail</a>
                 </div>
             </div>
             <div>

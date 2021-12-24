@@ -25,7 +25,7 @@
         <div class = "d-flex flex-row align-items-center">
             <a href="/" class = "px-2 text-white text-decoration-none">Home</a>
             @if (Auth::check() && Auth::user() -> role -> role == "Member")
-                <a href="" class = "px-2 text-white text-decoration-none">My Cart</a>
+                <a href="/cart" class = "px-2 text-white text-decoration-none">My Cart</a>
                 <a href="" class = "px-2 text-white text-decoration-none">History Transaction</a>
             @elseif (Auth::check() && Auth::user() -> role -> role == "Admin")
                 <div class = "dropdown">
