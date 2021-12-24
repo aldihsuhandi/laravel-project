@@ -60,7 +60,7 @@ class AuthController extends Controller
 
         if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
             if ($remember == true) {
-                $time = 60 * 60 * 5;
+                $time = 60 * 5;
                 Cookie::queue('email', $email, $time);
             }
             return redirect('/');
