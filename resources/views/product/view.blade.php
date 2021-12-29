@@ -25,9 +25,10 @@
         <form action="/cart/add" method = "post" class = "d-flex flex-row justify-content-start align-items-center py-2">
             <label for="quantity">Qty:</label>
             @csrf
+            <input type="hidden" name="action" value = {{ $action }}>
             <input type="hidden" name="product_id" value = "{{ $product -> id }}">
-            <input type="number" name="quantity" id="quantity" class = "border border-secondary rounded form-control p-2 m-2" value = "1">
-            <input type="submit" value="Add To Cart" class = "btn btn-warning">
+            <input type="number" name="quantity" id="quantity" class = "border border-secondary rounded form-control p-2 m-2" value = "@if($action == "update"){{ $quantity }}@else{{ 1 }}@endif">
+            <input type="submit" value="@if($action == "update") Update @else Add To Cart @endif" class = "btn btn-warning">
         </form>
         @else
         <a href="/login" class = "btn btn-warning">Login to buy</a>

@@ -12,7 +12,11 @@ class ProductController extends Controller
     public function view($product_id)
     {
         $product = Product::find($product_id);
-        return view('product.view', ["product" => $product]);
+        $action = "insert";
+        return view('product.view', [
+            "product" => $product,
+            "action" => $action
+        ]);
     }
 
     public function index()

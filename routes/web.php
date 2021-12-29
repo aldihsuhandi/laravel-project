@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/search', [HomeController::class, 'search']);
 Route::get('/product/{product_id}/view', [ProductController::class, 'view']);
 
 Route::middleware('guest')->group(function () {
@@ -33,10 +35,14 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('cart')->group(function () {
         Route::get('/', [CartController::class, 'index']);
+        Route::get('/{id}/update', [CartController::class, 'update']);
         Route::post('/add', [CartController::class, 'add']);
-        Route::delete('/deleteWholeCart', [CartController::class, 'deleteWholeCart']);
         Route::post('/delete', [CartController::class, 'delete']);
+
+        Route::get('/checkout', [CartController::class, 'checkout']);
     });
+
+    Route::get('/transaction', [TransactionController::class, 'index']);
 
     // admin
     Route::middleware('admin')->group(function () {
