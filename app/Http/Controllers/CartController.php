@@ -90,7 +90,7 @@ class CartController extends Controller
             $detail->save();
         }
 
-        Cart::truncate();
+        Cart::where('user_id', $user->id)->delete();
 
         return redirect()->back();
     }
